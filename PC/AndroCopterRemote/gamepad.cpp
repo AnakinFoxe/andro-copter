@@ -48,10 +48,17 @@ void Gamepad::startMonitoring(int index)
 
     // Count the number of axes.
     int nAxes = 0;
-    while(Joystick::hasAxis(gamepadIndex, (Joystick::Axis)nAxes))
+    for (int i=0; i<=Joystick::V; ++i)
+      if (Joystick::hasAxis(gamepadIndex, (Joystick::Axis)nAxes))
         nAxes++;
 
+    validAxes.resize(nAxes);
     axes.resize(nAxes);
+
+    // Get the valid Axes mapping
+    for (int i=0; i<=Joystick::V; ++i) 
+      if (Joystick::hasAxis(gamepadIndex, (Joystick::Axis)nAxes))
+          validAxes[j++] = i;
 
     // Count the number of buttons.
     buttons.resize(Joystick::getButtonCount(gamepadIndex));
@@ -69,7 +76,7 @@ QVector<double> Gamepad::getAxes()
     Joystick::update();
 
     for(int i=0; i<axes.size(); i++)
-        axes[i] = (double)Joystick::getAxisPosition(gamepadIndex, (Joystick::Axis)i) / JOYSTICK_AXIS_MAX;
+        axes[i] = (double)Joystick::getAxisPosition(gamepadIndex, (Joystick::Axis)validAxes[i]) / JOYSTICK_AXIS_MAX;
 
     return axes;
 }

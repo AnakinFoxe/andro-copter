@@ -91,6 +91,7 @@ public:
 
 private:
     QString name;
+    QVector<double> validAxes;
     QVector<double> axes;
     QVector<bool> buttons;
     int gamepadIndex;

@@ -33,7 +33,7 @@
 #define THRUST_AXIS 1
 #define YAW_AXIS 0
 #define PITCH_AXIS 3
-#define ROLL_AXIS 4
+#define ROLL_AXIS 2
 #define A_BUTTON 0
 #define B_BUTTON 1
 #define X_BUTTON 2

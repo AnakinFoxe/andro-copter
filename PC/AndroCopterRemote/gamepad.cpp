@@ -56,7 +56,7 @@ void Gamepad::startMonitoring(int index)
     axes.resize(nAxes);
 
     // Get the valid Axes mapping
-    for (int i=0; i<=Joystick::V; ++i) 
+    for (int i=0, j=0; i<=Joystick::V; ++i) 
       if (Joystick::hasAxis(gamepadIndex, (Joystick::Axis)nAxes))
           validAxes[j++] = i;
 
